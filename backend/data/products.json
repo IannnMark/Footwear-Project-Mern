@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Test",
+        "price": 45.89,
+        "description": "Test",
+        "ratings": 4.5,
+        "images": [
+            {
+                "public_id": "products/dsvbpny402gelwugv2le",
+                "url": ""
+            }
+        ],
+        "category": "Running Shoes",
+        "seller": "Ebay",
+        "stock": 50,
+        "numOfReviews": 32,
+        "reviews": []
+    }
+]
