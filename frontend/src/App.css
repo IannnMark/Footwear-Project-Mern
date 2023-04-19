@@ -1,11 +1,45 @@
 html,
 body {
-  font-family: 'Amazon Ember';
+  font-family: 'Times New Roman', Times, serif;
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  text-transform: uppercase;
+  text-decoration:solid;
+  background-color: rgb(255, 255, 255);
+}
+
+.row{
+  border: solid black;
+  padding: 20px 40px ;
+}
+.card{
+  border: solid black;
+  background-color: ghostwhite;
+  box-shadow: 3px 8px 3px 3px rgb(91, 90, 90);
+ 
+  
+
+}
+
+.card-img-top{
+  border: solid black;
+  border-radius: 3%;
+}
+
+/* .col-12{
+  background-image: url(/frontend/public/images/bg1.jpeg);
+} */
+
+
+
+.navbar-brand img {
+  height: 70px;
+  width: 150px;
+  border-radius: 15%;
+  box-shadow: 3px 3px 3px 3px black;
 }
 
 /* Scroll Bar */
@@ -27,8 +61,9 @@ body {
 }
 
 nav {
-  background-color: #232f3e;
-  padding: 1rem 1rem;
+  background-color: lightskyblue;
+  /* padding: 1rem 1rem; */
+  /* background-image: url(/frontend/public/images/bg1.jpeg); */
 }
 
 #search_btn {
@@ -50,15 +85,17 @@ nav {
   background-color: #febd69;
   padding: 0.4rem 1.8rem;
   font-family: calibri;
+  
 }
 
 #cart {
   font-size: 1rem;
-  color: white;
+  color: black;
+  text-decoration: solid;
 }
 
 #cart_count {
-  background-color: #febd69;
+  background-color:whitesmoke;
   padding: 0.2rem 0.5rem;
   border-radius: 0.2rem;
   color: black;
@@ -69,7 +106,10 @@ nav {
 /* Home page */
 #products_heading {
   margin-top: 1.8rem;
+  margin-left: 30px;
 }
+
+
 
 .card {
   height: 100%;
@@ -301,24 +341,32 @@ footer {
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
-
   font-weight: 700;
+
 }
 
 .wrapper form {
   padding: 2.5rem 3rem;
+  border: solid;
+  border-radius: 7%;
+  /* box-shadow:20px 20px 20px 20px black; */
+
+  
 }
 
 .wrapper form .btn {
   background-color: #fa9c23;
   border-color: #fa9c23;
-  color: white;
+  color: black;
   margin-top: 2.5rem;
+   box-shadow: 5px 5px 10px 3px black;
+  
 }
 
 .wrapper form a {
   font-size: 0.9rem;
   color: grey;
+ 
 }
 
 /* Avatar */

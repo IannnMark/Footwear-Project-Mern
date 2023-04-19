@@ -32,7 +32,6 @@ import UsersList from "./components/admin/UsersList";
 import UpdateUser from "./components/admin/UpdateUser";
 import ProductReviews from "./components/admin/ProductReviews";
 
-
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -205,7 +204,7 @@ function App() {
               <ProductReviews />
             </ProtectedRoute>
           }
-          exact = "true"
+          exact="true"
         />
         <Route path="/cart" element={<Cart />} exact="true" />
         {/* <Route path="/login" component={Login} /> */}
