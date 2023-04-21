@@ -1,12 +1,11 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import React from "react";
+import { Helmet } from "react-helmet";
 
 const MetaData = ({ title }) => {
-    return (
-        <Helmet>
-            <title>{`${title} - ShopIT`}</title>
-        </Helmet>
-    )
-}
-export default MetaData
-
+  return (
+    <Helmet>
+      <title>{`${title} - FootWearPH`}</title>
+    </Helmet>
+  );
+};
+export default MetaData;

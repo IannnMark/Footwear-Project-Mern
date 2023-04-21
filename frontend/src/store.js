@@ -32,6 +32,11 @@ import {
   orderReducer,
 } from "./reducers/orderReducers";
 
+import {
+  // salesPerMonthReducer,
+  productSalesReducer,
+} from "./reducers/chartReducers";
+
 const reducer = combineReducers({
   products: productsReducer,
   productDetails: productDetailsReducer,
@@ -51,6 +56,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
+  productSales: productSalesReducer,
 });
 let initialState = {
   cart: {

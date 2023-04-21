@@ -92,7 +92,7 @@ exports.forgotPassword = async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: "ShopIT Password Recovery",
+      subject: "FootWearPH Password Recovery",
       message,
     });
 
@@ -320,7 +320,7 @@ exports.forgotPassword = async (req, res, next) => {
     await sendEmail({
       email: user.email,
 
-      subject: "ShopIT Password Recovery",
+      subject: "FootWearPH Password Recovery",
 
       message,
 

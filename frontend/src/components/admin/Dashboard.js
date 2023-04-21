@@ -8,24 +8,38 @@ import Loader from "../layout/Loader";
 
 import Sidebar from "./Sidebar";
 
+// import UserSalesChart from "./UserSalesChart";
+
+// import MonthlySalesChart from "./MonthlySalesChart";
+
+import ProductSalesChart from "./ProductSalesChart";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAdminProducts } from "../../actions/productActions";
 
 import { allOrders } from "../../actions/orderActions";
 
-import { allUsers } from "../../actions/userActions";
+import { allUsers, userSales } from "../../actions/userActions";
+
+import { productSalesChart } from "../../actions/chartActions";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-    const { products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
 
-    const { users } = useSelector((state) => state.allUsers);
+  const { users } = useSelector((state) => state.allUsers);
 
-    const { orders, totalAmount, loading } = useSelector(
-      (state) => state.allOrders
-    );
+  // const { customerSales } = useSelector((state) => state.customerSales);
+
+  // const { salesPerMonth } = useSelector((state) => state.salesPerMonth);
+
+  const { productSales } = useSelector((state) => state.productSales);
+
+  const { orders, totalAmount, loading } = useSelector(
+    (state) => state.allOrders
+  );
 
   let outOfStock = 0;
 
@@ -39,6 +53,9 @@ const Dashboard = () => {
     dispatch(getAdminProducts());
     dispatch(allOrders());
     dispatch(allUsers());
+    // dispatch(userSales());
+    // dispatch(monthlySalesChart());
+    dispatch(productSalesChart());
   }, [dispatch]);
 
   return (
@@ -56,7 +73,7 @@ const Dashboard = () => {
           ) : (
             <Fragment>
               <MetaData title={"Admin Dashboard"} />
-              
+
               <div className="row pr-4">
                 <div className="col-xl-12 col-sm-12 mb-3">
                   <div className="card text-white bg-primary o-hidden h-100">
@@ -69,7 +86,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-{/* 
+              {/* 
               <div className="row pr-4">
                 <div className="col-xl-12 col-sm-12 mb-3">
                   <div className="card text-white bg-primary o-hidden h-100">
@@ -92,7 +109,7 @@ const Dashboard = () => {
                         <br /> <b>{products && products.length}</b>
                       </div>
                     </div>
-{/* 
+                    {/* 
               <div className="row pr-4">
                 <div className="col-xl-3 col-sm-6 mb-3">
                   <div className="card text-white bg-success o-hidden h-100">
@@ -124,7 +141,7 @@ const Dashboard = () => {
                         <br /> <b>{orders && orders.length}</b>
                       </div>
                     </div>
-{/* 
+                    {/* 
                 <div className="col-xl-3 col-sm-6 mb-3">
                   <div className="card text-white bg-danger o-hidden h-100">
                     <div className="card-body">
@@ -156,7 +173,7 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                {/* <div className="col-xl-3 col-sm-6 mb-3">
+                    {/* <div className="col-xl-3 col-sm-6 mb-3">
                   <div className="card text-white bg-info o-hidden h-100">
                     <div className="card-body">
                       <div className="text-center card-font-size">
@@ -186,18 +203,27 @@ const Dashboard = () => {
                         <br /> <b>{outOfStock}</b>
                       </div>
 
-                {/* <div className="col-xl-3 col-sm-6 mb-3">
+                      {/* <div className="col-xl-3 col-sm-6 mb-3">
                   <div className="card text-white bg-warning o-hidden h-100">
                     <div className="card-body">
                       <div className="text-center card-font-size">
                         Out of Stock
                         <br /> <b>0</b>
                       </div> */}
-
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* <Fragment>
+                <UserSalesChart data={customerSales} />
+              </Fragment>
+              <Fragment>
+                <MonthlySalesChart data={salesPerMonth} />
+              </Fragment> */}
+              <Fragment>
+                <ProductSalesChart data={productSales} />
+              </Fragment>
             </Fragment>
           )}
         </div>
