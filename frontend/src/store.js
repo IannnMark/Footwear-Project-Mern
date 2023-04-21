@@ -5,24 +5,24 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+
 import {
   productsReducer,
   productDetailsReducer,
   newReviewReducer,
   newProductReducer,
   productReducer,
-  reviewReducer,
   productReviewsReducer,
+  reviewReducer,
 } from "./reducers/productReducers";
-
 import {
   authReducer,
   userReducer,
   forgotPasswordReducer,
   allUsersReducer,
   userDetailsReducer,
+  customerSalesReducer,
 } from "./reducers/userReducers";
-
 import { cartReducer } from "./reducers/cartReducers";
 import {
   newOrderReducer,
@@ -31,12 +31,10 @@ import {
   allOrdersReducer,
   orderReducer,
 } from "./reducers/orderReducers";
-
 import {
-  // salesPerMonthReducer,
+  salesPerMonthReducer,
   productSalesReducer,
 } from "./reducers/chartReducers";
-
 const reducer = combineReducers({
   products: productsReducer,
   productDetails: productDetailsReducer,
@@ -56,14 +54,16 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   productReviews: productReviewsReducer,
   review: reviewReducer,
+  customerSales: customerSalesReducer,
+  salesPerMonth: salesPerMonthReducer,
   productSales: productSalesReducer,
 });
+
 let initialState = {
   cart: {
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
-
     shippingInfo: localStorage.getItem("shippingInfo")
       ? JSON.parse(localStorage.getItem("shippingInfo"))
       : {},

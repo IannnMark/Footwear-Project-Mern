@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../utils/multer");
+
 const {
   getProducts,
   newProduct,
@@ -13,16 +14,23 @@ const {
   deleteReview,
   productSales,
 } = require("../controllers/productController");
+
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
 
+// router.get('/products', isAuthenticatedUser,authorizeRoles('admin'),getProducts);
+// router.get('/products',  isAuthenticatedUser,  authorizeRoles('admin','user'), getProducts)
 router.get("/products", getProducts);
-// router.post('/product/new', newProduct);
-router.get("/product/:id", getSingleProduct);
-// router.route('/admin/product/:id').put(updateProduct).delete(deleteProduct);
-// router.get('/products', isAuthenticatedUser, getProducts);
-// router.get('/products', isAuthenticatedUser, authorizeRoles('admin'), getProducts); //SINGLE
-// router.get('/products', isAuthenticatedUser, authorizeRoles('admin','user'), getProducts); //MULTIPLE
 // router.post('/admin/product/new', isAuthenticatedUser, authorizeRoles('admin'), newProduct);
+router.get("/product/:id", getSingleProduct);
+router
+  .route("/admin/product/:id")
+  .put(
+    isAuthenticatedUser,
+    authorizeRoles("admin"),
+    upload.array("images", 10),
+    updateProduct
+  )
+  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);
 router.put("/review", isAuthenticatedUser, createProductReview);
 router.get("/reviews", isAuthenticatedUser, getProductReviews);
 router.get(
@@ -31,10 +39,6 @@ router.get(
   authorizeRoles("admin"),
   getAdminProducts
 );
-router
-  .route("/admin/product/:id")
-  .put(isAuthenticatedUser, authorizeRoles("admin"), updateProduct)
-  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);
 router.post(
   "/admin/product/new",
   isAuthenticatedUser,
@@ -42,17 +46,11 @@ router.post(
   upload.array("images", 10),
   newProduct
 );
-router
-  .route("/admin/product/:id")
-  .put(
-    isAuthenticatedUser,
-    authorizeRoles("admin"),
-    upload.array("images", 10),
-    updateProduct
-  );
-router
-  .route("/reviews")
-  .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteReview);
+router.delete(
+  "/reviews",
+  isAuthenticatedUser,
+  authorizeRoles("admin"),
+  deleteReview
+);
 router.get("/admin/products/sales", productSales);
-
 module.exports = router;

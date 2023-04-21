@@ -39,6 +39,9 @@ import {
   DELETE_USER_SUCCESS,
   DELETE_USER_RESET,
   DELETE_USER_FAIL,
+  USER_SALES_REQUEST,
+  USER_SALES_SUCCESS,
+  USER_SALES_FAIL,
 } from "../constants/userConstants";
 
 export const authReducer = (state = { user: {} }, action) => {
@@ -360,6 +363,36 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const customerSalesReducer = (state = { customerSales: [] }, action) => {
+  switch (action.type) {
+    case USER_SALES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case USER_SALES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        customerSales: action.payload,
+      };
+    case USER_SALES_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }
