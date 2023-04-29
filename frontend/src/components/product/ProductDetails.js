@@ -4,7 +4,7 @@ import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData";
 import { toast } from "react-toastify";
 import React, { Fragment, useState, useEffect } from "react";
-import ListReviews from '../review/ListReviews'
+import ListReviews from "../review/ListReviews";
 
 // import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from "react-redux";
@@ -45,7 +45,7 @@ const ProductDetails = () => {
     }
     if (success) {
       // alert.success("Reivew posted successfully");
-      successMsg("Reivew posted successfully");
+      successMsg("Review posted successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
   }, [dispatch, alert, error, reviewError, success, id]);
