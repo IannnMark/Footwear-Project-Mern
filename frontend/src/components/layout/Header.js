@@ -28,17 +28,15 @@ const Header = () => {
         </div>
 
         <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-          {user && user.role === "user" && (
-            <Link to="/cart" style={{ textDecoration: "none" }}>
-              <span id="cart" className="ml-3">
-                Cart
-              </span>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <span id="cart" className="ml-3">
+              Cart
+            </span>
 
-              <span className="ml-1" id="cart_count">
-                {cartItems.length}
-              </span>
-            </Link>
-          )}
+            <span className="ml-1" id="cart_count">
+              {cartItems.length}
+            </span>
+          </Link>
 
           {user ? (
             <div className="ml-4 dropdown d-inline">
