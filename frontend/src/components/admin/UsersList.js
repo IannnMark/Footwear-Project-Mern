@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { allUsers, clearErrors, deleteUser } from "../../actions/userActions";
 
-import { DELETE_USER_RESET } from '../../constants/userConstants'
+import { DELETE_USER_RESET } from "../../constants/userConstants";
 
 const UsersList = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const UsersList = () => {
 
   const { loading, error, users } = useSelector((state) => state.allUsers);
 
-  const { isDeleted } = useSelector(state => state.user)
+  const { isDeleted } = useSelector((state) => state.user);
 
   const errMsg = (message = "") =>
     toast.error(message, {
@@ -49,21 +49,18 @@ const UsersList = () => {
     }
 
     if (isDeleted) {
+      successMsg("User deleted successfully");
+      // alert.success('User deleted successfully');
 
-        successMsg('User deleted successfully');
-        // alert.success('User deleted successfully');
+      navigate("/admin/users");
 
-        navigate('/admin/users');
-
-        dispatch({ type: DELETE_USER_RESET })
-
+      dispatch({ type: DELETE_USER_RESET });
     }
-
-    }, [dispatch, error, isDeleted, navigate])
-//   }, [dispatch, alert, error, navigate]);
+  }, [dispatch, error, isDeleted, navigate]);
+  //   }, [dispatch, alert, error, navigate]);
 
   const deleteUserHandler = (id) => {
-    dispatch(deleteUser(id))
+    dispatch(deleteUser(id));
   };
 
   const setUsers = () => {
@@ -115,7 +112,7 @@ const UsersList = () => {
       data.rows.push({
         id: user._id,
 
-        name: user.name,
+        name: user.fname,
 
         email: user.email,
 

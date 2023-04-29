@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
 import ProductDetails from "./components/product/ProductDetails";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
+import { loadUser } from "./actions/userActions";
+import { useSelector } from "react-redux";
 import Profile from "./components/user/Profile";
 import ProtectedRoute from "./components/route/ProtectedRoute";
 import UpdateProfile from "./components/user/UpdateProfile";
 import UpdatePassword from "./components/user/UpdatePassword";
 import ForgotPassword from "./components/user/ForgotPassword";
 import NewPassword from "./components/user/NewPassword";
-
+import store from "./store";
 import Cart from "./components/cart/Cart";
 import Shipping from "./components/cart/Shipping";
 import ConfirmOrder from "./components/cart/ConfirmOrder";
@@ -21,7 +22,6 @@ import Payment from "./components/cart/Payment";
 import OrderSuccess from "./components/cart/OrderSuccess";
 import ListOrders from "./components/order/ListOrders";
 import OrderDetails from "./components/order/OrderDetails";
-
 import Dashboard from "./components/admin/Dashboard";
 import ProductsList from "./components/admin/ProductsList";
 import NewProduct from "./components/admin/NewProduct";
@@ -31,10 +31,6 @@ import ProcessOrder from "./components/admin/ProcessOrder";
 import UsersList from "./components/admin/UsersList";
 import UpdateUser from "./components/admin/UpdateUser";
 import ProductReviews from "./components/admin/ProductReviews";
-
-import { loadUser } from "./actions/userActions";
-import { useSelector } from "react-redux";
-import store from "./store";
 
 function App() {
   useEffect(() => {
@@ -46,22 +42,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} exact="true" />
-        <Route path="/product/:id" element={<ProductDetails />} exact="true" />
         <Route path="/search/:keyword" element={<Home />} exact="true" />
+        <Route path="/product/:id" element={<ProductDetails />} exact="true" />
         <Route path="/login" element={<Login />} exact="true" />
         <Route path="/register" element={<Register />} exact="true" />
-        <Route
-          path="/password/forgot"
-          element={<ForgotPassword />}
-          exact="true"
-        />
-        <Route
-          path="/password/reset/:token"
-          element={<NewPassword />}
-          exact="true"
-        />
-        <Route path="/cart" element={<Cart />} exact="true" />
-
+        <Route path="/me" element={<Profile />} exact="true" />
         <Route
           path="/me"
           element={
@@ -69,7 +54,6 @@ function App() {
               <Profile />
             </ProtectedRoute>
           }
-          exact="true"
         />
         <Route
           path="/me/update"
@@ -89,7 +73,16 @@ function App() {
           }
           exact="true"
         />
-
+        <Route
+          path="/password/forgot"
+          element={<ForgotPassword />}
+          exact="true"
+        />
+        <Route
+          path="/password/reset/:token"
+          element={<NewPassword />}
+          exact="true"
+        />
         <Route
           path="/shipping"
           element={
@@ -99,7 +92,6 @@ function App() {
           }
           exact="true"
         />
-
         <Route
           path="/confirm"
           element={
@@ -116,7 +108,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/success"
           element={
@@ -180,6 +171,7 @@ function App() {
               <OrdersList />
             </ProtectedRoute>
           }
+          exact="true"
         />
         <Route
           path="/admin/order/:id"
@@ -205,7 +197,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/admin/reviews"
           element={
@@ -213,9 +204,12 @@ function App() {
               <ProductReviews />
             </ProtectedRoute>
           }
+          exact="true"
         />
+        <Route path="/cart" element={<Cart />} exact="true" />
+        {/* <Route path="/login" component={Login} /> */}
       </Routes>
-      {!loading && (!isAuthenticated || user.role !== "admin") && <Footer />}
+      {!loading && (!isAuthenticated || user.role !== "admin") && <Footer />};
     </div>
   );
 }

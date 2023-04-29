@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, clearErrors } from "../../actions/orderActions";
 
 const OrderDetails = () => {
-//   const alert = useAlert();
+  //   const alert = useAlert();
 
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const OrderDetails = () => {
     dispatch(getOrderDetails(id));
 
     if (error) {
-    //   alert.error(error);
+      //   alert.error(error);
 
       dispatch(clearErrors());
     }

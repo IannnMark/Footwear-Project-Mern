@@ -26,6 +26,9 @@ body {
 .card-img-top {
   border: solid black;
   border-radius: 3%;
+  position: relative;
+  right:12px;
+  bottom: 10px;
 }
 
 
@@ -58,13 +61,16 @@ body {
 }
 
 nav {
-  background-color: lightskyblue;
+  /* background-color: lightskyblue; */
+  background-color: rgba(255, 255, 255, 0.815);
   /* padding: 1rem 1rem; */
   /* background-image: url(/frontend/public/images/bg1.jpeg); */
+  border-style: ridge ;
 }
 
 #search_btn {
   background-color: #febd69;
+  /* background-color: ; */
 }
 
 .input-group {
@@ -79,9 +85,9 @@ nav {
 
 #login_btn,
 #view_btn {
-  background-color: green;
+  background-color: orange;
   padding: 0.4rem 1.8rem;
-  font-family: calibri;
+  font-family: sans-serif;
 
 }
 
@@ -345,15 +351,12 @@ footer {
 .wrapper form {
   padding: 2.5rem 3rem;
   border: solid;
-  /* border-radius: ; */
-  /* box-shadow:20px 20px 20px 20px black; */
-
-
+  border-radius: 20px;
 }
 
 .wrapper form .btn {
-  background-color: green;
-  border-color: rgb(17, 127, 17);
+  background-color: orange;
+  border-color: orange;
   color: black;
   margin-top: 2.5rem;
   box-shadow: 5px 5px 10px 3px black;

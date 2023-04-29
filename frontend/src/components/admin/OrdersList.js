@@ -54,30 +54,28 @@ const OrdersList = () => {
     }
 
     if (isDeleted) {
+      successMsg("Order deleted successfully");
 
-        successMsg('Order deleted successfully');
+      navigate("/admin/orders");
 
-        navigate('/admin/orders');
-
-        dispatch({ type: DELETE_ORDER_RESET })
-
+      dispatch({ type: DELETE_ORDER_RESET });
     }
-      }, [dispatch, error, navigate, isDeleted]);
-    //   [dispatch, error, navigate]);
-//     dispatch(getOrderDetails(orderId));
+  }, [dispatch, error, navigate, isDeleted]);
+  //   [dispatch, error, navigate]);
+  //     dispatch(getOrderDetails(orderId));
 
-//     if (error) {
-//       errMsg(error);
+  //     if (error) {
+  //       errMsg(error);
 
-//       dispatch(clearErrors());
-//     }
+  //       dispatch(clearErrors());
+  //     }
 
-//     if (isUpdated) {
-//       successMsg("Order updated successfully");
+  //     if (isUpdated) {
+  //       successMsg("Order updated successfully");
 
-//       dispatch({ type: UPDATE_ORDER_RESET });
-//     }
-//   }, [dispatch, error, isUpdated, orderId]);
+  //       dispatch({ type: UPDATE_ORDER_RESET });
+  //     }
+  //   }, [dispatch, error, isUpdated, orderId]);
 
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
