@@ -12,7 +12,7 @@ import {
 } from "recharts";
 
 export default function UserSalesChart({ data }) {
-  const barColors = ["#1f77b4", "#ff7f0e", "#2ca02c"];
+  const barColors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#a02c2c"];
   return (
     <ResponsiveContainer width="90%" height={600}>
       <BarChart data={data}>

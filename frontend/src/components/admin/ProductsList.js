@@ -57,10 +57,8 @@ const ProductsList = () => {
 
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
-  },  [dispatch, error, deleteError, isDeleted, navigate]);
+  }, [dispatch, error, deleteError, isDeleted, navigate]);
   // [dispatch, error, isDeleted, deleteError, navigate]);
-
- 
 
   const setProducts = () => {
     const data = {
@@ -98,6 +96,14 @@ const ProductsList = () => {
         },
 
         {
+          label: "Images",
+
+          field: "images",
+
+          sort: "asc",
+        },
+
+        {
           label: "Actions",
 
           field: "actions",
@@ -116,6 +122,15 @@ const ProductsList = () => {
         price: `$${product.price}`,
 
         stock: product.stock,
+
+        images: (
+          <img
+            src={product.images[0].url} // Assuming that the first image is the main image
+            alt={product.name}
+            className="product-image"
+            style={{ width: "80px", height: "80px" }}
+          />
+        ),
 
         actions: (
           <Fragment>
@@ -141,7 +156,7 @@ const ProductsList = () => {
   };
 
   const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id))
+    dispatch(deleteProduct(id));
   };
 
   return (

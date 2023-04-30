@@ -99,6 +99,14 @@ const UsersList = () => {
         },
 
         {
+          label: "Avatar",
+
+          field: "avatar",
+
+          sort: "asc",
+        },
+
+        {
           label: "Actions",
 
           field: "actions",
@@ -117,6 +125,15 @@ const UsersList = () => {
         email: user.email,
 
         role: user.role,
+
+        avatar: (
+          <img
+            src={user.avatar.url} // Assuming that the first image is the main image
+            alt={user.fname}
+            className="product-image"
+            style={{ width: "80px", height: "80px" }}
+          />
+        ),
 
         actions: (
           <Fragment>

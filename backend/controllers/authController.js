@@ -159,7 +159,12 @@ exports.updatePassword = async (req, res, next) => {
 
 exports.updateProfile = async (req, res, next) => {
   const newUserData = {
-    name: req.body.name,
+    fname: req.body.fname,
+    lname: req.body.lname,
+    phone: req.body.phone,
+    address: req.body.address,
+    town: req.body.town,
+    city: req.body.city,
     email: req.body.email,
   };
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {

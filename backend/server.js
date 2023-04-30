@@ -11,12 +11,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// cloudinary.config({
-//   cloudname: "dctuofruu",
-//   api_key: "382973281519661",
-//   api_secret: "JQJb8rw22rJ9Q9HVhXr_rj0dl5w",
-// });
-
 connectDatabase();
 console.log(process.env.DATABASE);
 
