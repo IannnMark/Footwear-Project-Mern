@@ -3,6 +3,7 @@ import "../../App.css";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { logout } from "../../actions/userActions";
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
         <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
           <Link to="/cart" style={{ textDecoration: "none" }}>
             <span id="cart" className="ml-3">
-              Cart
+              <FaShoppingCart />
             </span>
 
             <span className="ml-1" id="cart_count">
